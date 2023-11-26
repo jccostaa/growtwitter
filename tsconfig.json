@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+  "moduleResolution": "node",
+  "target": "ESNext", // versao do javascript que voce quer transpilar
+  "rootDir": "./src", // pasta de origem
+  "outDir": "./build"	// pasta destino
+},
+"include": [
+  "src/**/*.ts"  // todos os arquivos dentro da pasta src
+],
+"exclude": [
+  "node_modules" 
+]
+}
