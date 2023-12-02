@@ -52,8 +52,11 @@ export class Tweet {
 
 
     public showReplies(){
-
-
-        return this._replies
+        const replies = this.replies;
+        console.log('Replies:');
+        
+        replies.forEach(reply => {
+            console.log(`- @${reply.user.username}: ${reply.content}`);
+        });
     }
 }

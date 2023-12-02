@@ -33,12 +33,18 @@ export class User {
         }
 
         public follow(user:User){
-            if(this._following.includes(user)){
-                console.log(`${this._name} já está seguindo ${user._name}`);
-            }else{
-                this._following.push(user)
-                console.log(`${this._name} começou a seguir ${user._name}`);
 
+            if(this.username != user.username){
+                if(this._following.includes(user)){
+                    console.log(`${this._name} já está seguindo ${user._name}`);
+                }else{
+                    this._following.push(user)
+                    console.log(`${this._name} começou a seguir ${user._name}`);
+    
+                }
+            }else{
+                console.log('Você não pode seguir a si mesmo');
+                
             }
         }
         
@@ -64,6 +70,13 @@ export class User {
                 
             })
         }
+
+        public showHwoImFollowing(){
+            console.log(`Lista de usuarios que ${this.username} segue:`)
+            this._following.forEach((user)=>{
+                console.log(`@${user.username}`)
+            })
+        }
         
         static usernameExist(username:string):boolean{
             return users.some(user => user._username === username)
@@ -77,5 +90,7 @@ export class User {
             users.push(newUser)
             return newUser
             } 
+
+        
         }
 

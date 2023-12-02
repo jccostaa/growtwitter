@@ -23,4 +23,5 @@ tweet1.reply(user2,'rimps')
 
 
 //tweet1.show()
-user1.showTweets()
+//user1.showTweets()
+tweet1.showReplies()
