@@ -5,19 +5,19 @@ import { tweets } from "../data/tweets";
 
 
 export class User {
-    public id: string
-    private seguindo: User[] = []
-    static getName: User;
+    private _id: string
+    private _seguindo: User[] = [];
+    private _tweets : Tweet[] = [];
     constructor(
-        private name:string,
-        private username:string,
+        private _name:string,
+        private _username:string,
         private email:string,
         private password:string
     ){
-        if(User.usernameExist(username)){
-            throw new Error('Nome de usuario já cadastrado')
+        if(User.usernameExist(_username)){
+            console.log('Nome de usuario já cadastrado')
         }
-        this.id = createUuid();
+        this._id = createUuid();
         }
         
         public sendTweet(content:string){
@@ -25,15 +25,31 @@ export class User {
             console.log(tweet)
             tweets.push(tweet)
         }
-        
+        get name(): string {
+            return this._name;
+          }
+
         public follow(user:User){}
         
-        public showFeed():void{}
+        public showFeed():void{
+            console.log()
+        }
         
-        public showTweets():void{}
+        public showTweets():void{
+            console.log(this._tweets)
+        }
         
         static usernameExist(username:string):boolean{
-            return users.some(user => user.username === username)
+            return users.some(user => user._username === username)
         }
-    }
+
+        static newUser(name:string,username:string,email:string,password:string):User{
+            if(User.usernameExist(username)){
+                console.log('Nome de usuario já cadastrado')
+            }
+            const newUser= new User(name,username,email,password)
+            users.push(newUser)
+            return newUser
+            } 
+        }
 
